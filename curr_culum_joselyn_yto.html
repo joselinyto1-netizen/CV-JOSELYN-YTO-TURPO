@@ -1,0 +1,707 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Joselyn Yto - Agente Comercial Profesional</title>
+    <style>
+        /* =========================================
+           VARIABLES Y RESET
+        ========================================= */
+        :root {
+            --color-black: #000000;
+            --color-dark-gray: #333333;
+            --color-gray: #888888;
+            --color-light-gray: #f4f4f4;
+            --color-white: #ffffff;
+            --font-main: 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            font-family: var(--font-main);
+            background-color: var(--color-white);
+            color: var(--color-black);
+            line-height: 1.6;
+        }
+
+        a {
+            text-decoration: none;
+            color: inherit;
+        }
+
+        ul {
+            list-style: none;
+        }
+
+        /* =========================================
+           NAVEGACIÓN (FLAT DESIGN)
+        ========================================= */
+        .navbar {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            background-color: var(--color-black);
+            color: var(--color-white);
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 1rem 2rem;
+            z-index: 1000;
+            border-bottom: 4px solid var(--color-gray);
+        }
+
+        .navbar-brand {
+            font-size: 1.5rem;
+            font-weight: 700;
+            letter-spacing: 1px;
+            text-transform: uppercase;
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 2rem;
+        }
+
+        .nav-links a {
+            font-size: 1rem;
+            font-weight: 600;
+            text-transform: uppercase;
+            transition: color 0.3s ease;
+        }
+
+        .nav-links a:hover {
+            color: var(--color-gray);
+        }
+
+        /* Botón Hamburguesa */
+        .hamburger {
+            display: none;
+            cursor: pointer;
+            flex-direction: column;
+            gap: 5px;
+            z-index: 1001;
+        }
+
+        .hamburger .bar {
+            width: 30px;
+            height: 3px;
+            background-color: var(--color-white);
+            transition: all 0.4s ease;
+        }
+
+        /* =========================================
+           SECCIONES GENERALES
+        ========================================= */
+        section {
+            padding: 6rem 2rem 4rem;
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+        }
+
+        .container {
+            max-width: 1000px;
+            margin: 0 auto;
+            width: 100%;
+        }
+
+        .section-title {
+            font-size: 2.5rem;
+            font-weight: 800;
+            text-transform: uppercase;
+            margin-bottom: 2rem;
+            border-bottom: 4px solid var(--color-black);
+            display: inline-block;
+            padding-bottom: 0.5rem;
+        }
+
+        /* =========================================
+           SOBRE MÍ (HERO)
+        ========================================= */
+        #sobre-mi {
+            background-color: var(--color-light-gray);
+            border-bottom: 4px solid var(--color-black);
+        }
+
+        .hero-content {
+            display: flex;
+            align-items: center;
+            gap: 4rem;
+        }
+
+        .hero-text h1 {
+            font-size: 4rem;
+            font-weight: 900;
+            text-transform: uppercase;
+            line-height: 1.1;
+            margin-bottom: 1rem;
+        }
+
+        .hero-text h2 {
+            font-size: 1.5rem;
+            color: var(--color-dark-gray);
+            margin-bottom: 1.5rem;
+            font-weight: 400;
+        }
+
+        .hero-text p {
+            font-size: 1.1rem;
+            margin-bottom: 2rem;
+            max-width: 600px;
+        }
+
+        .btn {
+            display: inline-block;
+            background-color: var(--color-black);
+            color: var(--color-white);
+            padding: 1rem 2rem;
+            font-weight: 700;
+            text-transform: uppercase;
+            border: 2px solid var(--color-black);
+            transition: all 0.3s ease;
+        }
+
+        .btn:hover {
+            background-color: var(--color-white);
+            color: var(--color-black);
+        }
+
+        /* =========================================
+           EXPERIENCIA
+        ========================================= */
+        #experiencia {
+            background-color: var(--color-white);
+        }
+
+        .timeline {
+            display: flex;
+            flex-direction: column;
+            gap: 2rem;
+        }
+
+        .timeline-item {
+            border: 4px solid var(--color-black);
+            padding: 2rem;
+            background-color: var(--color-white);
+            position: relative;
+        }
+
+        .timeline-item h3 {
+            font-size: 1.5rem;
+            font-weight: 700;
+            margin-bottom: 0.5rem;
+        }
+
+        .timeline-date {
+            display: inline-block;
+            background-color: var(--color-black);
+            color: var(--color-white);
+            padding: 0.2rem 0.8rem;
+            font-size: 0.9rem;
+            font-weight: 600;
+            margin-bottom: 1rem;
+        }
+
+        .timeline-item ul {
+            list-style: square inside;
+            color: var(--color-dark-gray);
+        }
+
+        .timeline-item ul li {
+            margin-bottom: 0.5rem;
+        }
+
+        /* =========================================
+           EDUCACIÓN
+        ========================================= */
+        #educacion {
+            background-color: var(--color-light-gray);
+            border-top: 4px solid var(--color-black);
+            border-bottom: 4px solid var(--color-black);
+        }
+
+        .grid-cards {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+        }
+
+        .card {
+            background-color: var(--color-white);
+            border: 4px solid var(--color-black);
+            padding: 2rem;
+            text-align: center;
+        }
+
+        .card h4 {
+            font-size: 1.3rem;
+            font-weight: 700;
+            margin-bottom: 1rem;
+        }
+
+        .card p {
+            color: var(--color-dark-gray);
+            font-weight: 500;
+        }
+
+        /* =========================================
+           HABILIDADES & MÁS INFO
+        ========================================= */
+        #habilidades {
+            background-color: var(--color-white);
+        }
+
+        .skills-wrapper {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 1rem;
+            margin-bottom: 3rem;
+        }
+
+        .skill-tag {
+            background-color: var(--color-black);
+            color: var(--color-white);
+            padding: 0.8rem 1.5rem;
+            font-size: 1rem;
+            font-weight: 600;
+            text-transform: uppercase;
+        }
+
+        .info-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 2rem;
+        }
+
+        .info-box h3 {
+            font-size: 1.5rem;
+            border-bottom: 2px solid var(--color-black);
+            padding-bottom: 0.5rem;
+            margin-bottom: 1rem;
+        }
+
+        .info-box ul li {
+            margin-bottom: 0.5rem;
+            font-weight: 500;
+        }
+
+        /* =========================================
+           CONTACTO & FOOTER
+        ========================================= */
+        #contacto {
+            background-color: var(--color-black);
+            color: var(--color-white);
+            min-height: auto;
+            padding: 6rem 2rem;
+        }
+
+        #contacto .section-title {
+            border-bottom-color: var(--color-white);
+        }
+
+        .contact-info {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 2rem;
+            margin-top: 2rem;
+        }
+
+        .contact-item {
+            border: 2px solid var(--color-gray);
+            padding: 2rem;
+            text-align: center;
+            transition: border-color 0.3s ease;
+        }
+
+        .contact-item:hover {
+            border-color: var(--color-white);
+        }
+
+        .contact-item h4 {
+            font-size: 1.2rem;
+            margin-bottom: 1rem;
+            color: var(--color-gray);
+            text-transform: uppercase;
+        }
+
+        .contact-item p {
+            font-size: 1.1rem;
+            font-weight: 600;
+        }
+
+        /* Formulario de Contacto */
+        .contact-form-container {
+            margin-top: 4rem;
+            background-color: var(--color-white);
+            padding: 3rem;
+            color: var(--color-black);
+            border: 4px solid var(--color-gray);
+        }
+        
+        .contact-form-container h3 {
+            font-size: 1.8rem;
+            margin-bottom: 2rem;
+            text-transform: uppercase;
+            text-align: center;
+        }
+
+        .form-group {
+            margin-bottom: 1.5rem;
+        }
+
+        .form-group label {
+            display: block;
+            margin-bottom: 0.5rem;
+            font-weight: 600;
+            text-transform: uppercase;
+            font-size: 0.9rem;
+        }
+
+        .form-control {
+            width: 100%;
+            padding: 1rem;
+            border: 2px solid var(--color-black);
+            background-color: var(--color-light-gray);
+            font-family: var(--font-main);
+            font-size: 1rem;
+            transition: all 0.3s ease;
+        }
+
+        .form-control:focus {
+            outline: none;
+            border-color: var(--color-gray);
+            background-color: var(--color-white);
+        }
+
+        textarea.form-control {
+            resize: vertical;
+            min-height: 150px;
+        }
+
+        .btn-submit {
+            width: 100%;
+            background-color: var(--color-black);
+            color: var(--color-white);
+            padding: 1rem;
+            font-size: 1.1rem;
+            font-weight: 700;
+            text-transform: uppercase;
+            border: 2px solid var(--color-black);
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .btn-submit:hover {
+            background-color: var(--color-white);
+            color: var(--color-black);
+        }
+
+        footer {
+            background-color: var(--color-black);
+            color: var(--color-gray);
+            text-align: center;
+            padding: 2rem;
+            border-top: 1px solid var(--color-dark-gray);
+        }
+
+        /* =========================================
+           RESPONSIVIDAD Y ANIMACIONES (MOBILE)
+        ========================================= */
+        @media (max-width: 768px) {
+            .hamburger {
+                display: flex;
+            }
+
+            .nav-links {
+                position: fixed;
+                top: 66px; /* Altura aproximada del header */
+                left: -100%;
+                width: 100%;
+                height: calc(100vh - 66px);
+                background-color: var(--color-black);
+                flex-direction: column;
+                align-items: center;
+                justify-content: center;
+                gap: 3rem;
+                transition: left 0.5s cubic-bezier(0.77, 0, 0.175, 1);
+                border-top: 2px solid var(--color-dark-gray);
+            }
+
+            .nav-links.active {
+                left: 0;
+            }
+
+            .nav-links a {
+                font-size: 1.5rem;
+            }
+
+            /* Animación del botón hamburguesa */
+            .hamburger.active .bar:nth-child(1) {
+                transform: translateY(8px) rotate(45deg);
+            }
+
+            .hamburger.active .bar:nth-child(2) {
+                opacity: 0;
+            }
+
+            .hamburger.active .bar:nth-child(3) {
+                transform: translateY(-8px) rotate(-45deg);
+            }
+
+            .hero-content {
+                flex-direction: column;
+                text-align: center;
+            }
+
+            .hero-text h1 {
+                font-size: 3rem;
+            }
+
+            .info-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            .contact-form-container {
+                padding: 1.5rem;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- MENÚ DE NAVEGACIÓN -->
+    <nav class="navbar">
+        <div class="navbar-brand">Joselyn Yto</div>
+        <div class="hamburger" id="hamburger">
+            <span class="bar"></span>
+            <span class="bar"></span>
+            <span class="bar"></span>
+        </div>
+        <ul class="nav-links" id="nav-links">
+            <li><a href="#sobre-mi">Sobre mí</a></li>
+            <li><a href="#experiencia">Experiencia</a></li>
+            <li><a href="#educacion">Educación</a></li>
+            <li><a href="#habilidades">Habilidades</a></li>
+            <li><a href="#contacto">Contacto</a></li>
+        </ul>
+    </nav>
+
+    <!-- SECCIÓN SOBRE MÍ -->
+    <section id="sobre-mi">
+        <div class="container hero-content">
+            <div class="hero-text">
+                <h1>Joselyn Yto</h1>
+                <h2>Agente Comercial Profesional</h2>
+                <p>Apasionada de las actividades comerciales, me defino por ser una persona con ganas de aprender y desempeñarme en grandes equipos.</p>
+                <a href="#contacto" class="btn">Contactar ahora</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- SECCIÓN EXPERIENCIA LABORAL -->
+    <section id="experiencia">
+        <div class="container">
+            <h2 class="section-title">Experiencia Laboral</h2>
+            <div class="timeline">
+                
+                <div class="timeline-item">
+                    <h3>Fundadora y Especialista en Belleza Integral | Artemisa Center</h3>
+                    <span class="timeline-date">Enero 2023 - Abril 2026</span>
+                    <p><em>Emprendimiento en rubro de belleza.</em></p>
+                    <br>
+                    <ul>
+                        <li>Diseño y ejecución de estrategias de captación y fidelización.</li>
+                        <li>Administración integral del servicio: control de inventario de insumos, gestión de flujos de caja y estructuración de precios rentables.</li>
+                        <li>Creación de contenido orgánico y manejo de canales digitales (Instagram, TikTok) para posicionar identidad de marca.</li>
+                        <li>Realización de presupuestos.</li>
+                    </ul>
+                </div>
+
+                <div class="timeline-item">
+                    <h3>Entel</h3>
+                    <span class="timeline-date">Experiencia Comercial</span>
+                    <ul>
+                        <li>Asesora de ventas, comisionista.</li>
+                        <li>Abordaje y captación de clientes.</li>
+                        <li>Venta de paquetes de internet en campo y puntos de venta.</li>
+                    </ul>
+                </div>
+
+                <div class="timeline-item">
+                    <h3>Secretaria en I.E.P BALMER | Empresa de Seguros, S.L.</h3>
+                    <span class="timeline-date">2018 - Abril 2020</span>
+                    <ul>
+                        <li>Auxiliar de publicidad.</li>
+                        <li>Captación de nuevos clientes.</li>
+                        <li>Elaboración y apoyo en gestión de documentos.</li>
+                    </ul>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <!-- SECCIÓN EDUCACIÓN -->
+    <section id="educacion">
+        <div class="container">
+            <h2 class="section-title">Datos Académicos</h2>
+            <div class="grid-cards">
+                
+                <div class="card">
+                    <h4>Universidad Católica de Santa María</h4>
+                    <p>Estudios en obstetricia y puericultura</p>
+                    <span class="timeline-date" style="margin-top: 1rem;">Actual</span>
+                </div>
+
+                <div class="card">
+                    <h4>Escuela de baile Caribe</h4>
+                    <p>Estudios en comercio</p>
+                    <span class="timeline-date" style="margin-top: 1rem;">Sept 2023 - Jul 2024</span>
+                </div>
+
+                <div class="card">
+                    <h4>Centro de estudios Herberth Von Blumer</h4>
+                    <p>Estudios secundarios</p>
+                    <span class="timeline-date" style="margin-top: 1rem;">2011 - 2016</span>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <!-- SECCIÓN HABILIDADES E INFO ADICIONAL -->
+    <section id="habilidades">
+        <div class="container">
+            <h2 class="section-title">Habilidades Profesionales</h2>
+            <div class="skills-wrapper">
+                <span class="skill-tag">Buena comunicación</span>
+                <span class="skill-tag">Gestión de grandes equipos</span>
+                <span class="skill-tag">Resolución de problemas</span>
+                <span class="skill-tag">Dominio del paquete Office</span>
+                <span class="skill-tag">Espíritu comercial</span>
+                <span class="skill-tag">Agilidad con los resultados</span>
+            </div>
+
+            <div class="info-grid">
+                <div class="info-box">
+                    <h3>Idiomas</h3>
+                    <ul>
+                        <li><strong>Español:</strong> Nativo</li>
+                        <li><strong>Inglés:</strong> Nivel Básico</li>
+                    </ul>
+                </div>
+                <div class="info-box">
+                    <h3>Más Información</h3>
+                    <ul>
+                        <li>Carné de conducir</li>
+                        <li>Vehículo propio</li>
+                        <li>Disponibilidad total</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- SECCIÓN CONTACTO -->
+    <section id="contacto">
+        <div class="container">
+            <h2 class="section-title" style="color: var(--color-white);">Contacto</h2>
+            <p>¿Interesado en trabajar juntos? Puedes comunicarte conmigo a través de los siguientes medios o rellenando el formulario:</p>
+            
+            <div class="contact-info">
+                <div class="contact-item">
+                    <h4>Teléfono</h4>
+                    <p>997-533-448</p>
+                </div>
+                <div class="contact-item">
+                    <h4>Correo Electrónico</h4>
+                    <p>joselinyto1@gmail.com</p>
+                </div>
+                <div class="contact-item">
+                    <h4>Ubicación</h4>
+                    <p>Jacobo Hunter, Alto Alianza</p>
+                </div>
+            </div>
+
+            <div class="contact-form-container">
+                <h3>Envíame un mensaje</h3>
+                <form action="#" method="POST" id="contact-form">
+                    <div class="form-group">
+                        <label for="nombre">Nombre completo</label>
+                        <input type="text" id="nombre" name="nombre" class="form-control" required placeholder="Tu nombre">
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="email">Correo electrónico</label>
+                        <input type="email" id="email" name="email" class="form-control" required placeholder="tu@email.com">
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="asunto">Asunto</label>
+                        <input type="text" id="asunto" name="asunto" class="form-control" required placeholder="Motivo de tu mensaje">
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="mensaje">Mensaje</label>
+                        <textarea id="mensaje" name="mensaje" class="form-control" required placeholder="Escribe tu mensaje aquí..."></textarea>
+                    </div>
+                    
+                    <button type="submit" class="btn-submit">Enviar Mensaje</button>
+                </form>
+            </div>
+        </div>
+    </section>
+
+    <footer>
+        <p>&copy; 2026 Joselyn Yto. Todos los derechos reservados.</p>
+    </footer>
+
+    <!-- JAVASCRIPT PARA INTERACTIVIDAD -->
+    <script>
+        const hamburger = document.getElementById('hamburger');
+        const navLinks = document.getElementById('nav-links');
+        const links = document.querySelectorAll('.nav-links a');
+
+        // Función para alternar el menú
+        hamburger.addEventListener('click', () => {
+            hamburger.classList.toggle('active');
+            navLinks.classList.toggle('active');
+        });
+
+        // Función para cerrar el menú al hacer clic en un enlace (ideal para móviles)
+        links.forEach(link => {
+            link.addEventListener('click', () => {
+                hamburger.classList.remove('active');
+                navLinks.classList.remove('active');
+            });
+        });
+
+        const contactForm = document.getElementById('contact-form');
+        if(contactForm) {
+            contactForm.addEventListener('submit', function(e) {
+                e.preventDefault(); // Evita que la página se recargue
+                
+                // Aquí iría la lógica real para enviar el correo (ej. Fetch API a un backend)
+                
+                // Mostramos un mensaje de confirmación simple (puedes reemplazarlo por un modal más elegante)
+                alert('¡Gracias por tu mensaje! Me pondré en contacto contigo pronto.');
+                
+                // Limpiamos el formulario
+                this.reset();
+            });
+        }
+    </script>
+</body>
+</html>
